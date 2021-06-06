@@ -37,13 +37,38 @@ Implement the program using data structures to avoid nested if statements.
 
 public class App {
     public static void main(String[] args) {
+        String wis = "Wisconsin";
+        String il = "Illinois";
+        String cnty1 = "Eau Claire";
+        String cnty2 = "Dunn";
         Scanner in = new Scanner(System.in);
         System.out.print("What is the order amount? ");
-        double amount = in.nextDouble();
+        String og_amount = in.nextLine();
         System.out.print("What state do you live in? ");
         String state = in.nextLine();
-        System.out.print("What county do you live in? ");
-        String county = in.nextLine();
+        //System.out.print("What county do you live in? ");
+        //String county = in.nextLine();
+        double original = Double.parseDouble(og_amount);
+        if((state.equals(wis) == true)) {
+            System.out.print("What county do you live in? ");
+            String county = in.nextLine();
+            double new_amount = (original * .005) + original;
+            if(county.equals(cnty1) == true) {
+                new_amount = (original * .005) + original;
+            }
+            else if(county.equals(cnty2) == true) {
+                new_amount = (original * .004) + original;
+            }
+        System.out.printf("the tax is $%.2f\nThe total is $%.2f",(new_amount - original) ,new_amount);
+        }
+        else if(state.equals(il) == true) {
+            double new_amount = (original * .008) + original;
+            System.out.printf("the tax is $%f\nThe total is $%.2f", (new_amount - original) ,new_amount);
+
+        }
+        else {
+            System.out.printf("the total is $%f", original);
+        }
 
 
     }
